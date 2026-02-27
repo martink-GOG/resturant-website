@@ -1,0 +1,463 @@
+
+    /* Copperplate Gothic — system font, no import needed */
+
+    :root {
+      --lavender: #D1CCDC;
+      --blush:    #F5EDF0;
+      --mocha:    #886F68;
+      --navy:     #003459;
+      --teal:     #007EA7;
+      --white:    #FDFBFC;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    button, input { font-family: inherit; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--blush);
+      color: var(--navy);
+      font-family: 'Copperplate Gothic';
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────────── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 4rem;
+      background: var(--white);
+      border-bottom: 1px solid var(--lavender);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      
+      font-size: 1.6rem;
+      letter-spacing: 0.15em;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--mocha);
+      font-size: 0.65rem;
+      display: block;
+      letter-spacing: 0.3em;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 3rem;
+    }
+
+    nav a {
+      
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--navy);
+      opacity: 0.6;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    nav a:hover { opacity: 1; color: var(--teal); }
+
+    .btn-login {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.4rem;
+      background: transparent;
+      border: 1px solid var(--navy);
+      color: var(--navy);
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-left: 1rem;
+      white-space: nowrap;
+    }
+
+    .btn-login:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* ── TAB BAR ────────────────────────────────────────────── */
+    .tab-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 4rem;
+      background: var(--white);
+      border-bottom: 1px solid var(--lavender);
+    }
+
+    .tab-bar-spacer { margin-left: auto; }
+
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--lavender);
+      border-radius: 2rem;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .search-wrap:focus-within { border-color: var(--navy); }
+
+    .search-wrap input {
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 0.45rem 1rem;
+      font-family: 'Copperplate Gothic';
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--navy);
+      width: 160px;
+    }
+
+    .search-wrap input::placeholder {
+      font-family: 'Copperplate Gothic';
+      color: var(--lavender);
+    }
+
+    .search-wrap button {
+      background: none;
+      border: none;
+      padding: 0.45rem 0.8rem;
+      cursor: pointer;
+      color: var(--navy);
+      opacity: 0.5;
+      display: flex;
+      align-items: center;
+      transition: opacity 0.2s;
+    }
+
+    .search-wrap button:hover { opacity: 1; }
+
+    .tab-bar button {
+      
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.2rem;
+      border: 1px solid var(--lavender);
+      border-radius: 2rem;
+      background: transparent;
+      color: var(--navy);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-bar button:hover,
+    .tab-bar button.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────────────── */
+    .layout {
+      display: flex;
+    }
+
+    /* ── MAIN ───────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      padding: 3rem 4rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── PIZZA CARD ─────────────────────────────────────────── */
+    article.pizza-card {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 2.5rem;
+      background: var(--white);
+      border: 1px solid var(--lavender);
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    article.pizza-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--lavender);
+      transition: background 0.3s;
+    }
+
+    article.pizza-card:hover {
+      box-shadow: 0 8px 40px rgba(0,52,89,0.07);
+      transform: translateY(-2px);
+    }
+
+    article.pizza-card:hover::before { background: var(--teal); }
+
+    .pizza-image {
+      width: 160px;
+      height: 130px;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: var(--lavender);
+    }
+
+    .pizza-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    article.pizza-card:hover .pizza-image img { transform: scale(1.05); }
+
+    .pizza-info { flex: 1; }
+
+    .pizza-info h2 {
+      
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--navy);
+    }
+
+    .pizza-info .desc {
+      font-size: 1rem;
+      color: var(--mocha);
+      font-style: italic;
+      line-height: 1.5;
+      max-width: 400px;
+    }
+
+    .pizza-info .ingredients {
+      font-size: 0.78rem;
+      color: var(--navy);
+      opacity: 0.45;
+      font-style: normal;
+      margin-top: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    .pizza-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .price {
+      
+      font-size: 1rem;
+      color: var(--navy);
+      letter-spacing: 0.05em;
+    }
+
+    .btn-add {
+      
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.6rem;
+      background: transparent;
+      border: 1px solid var(--navy);
+      color: var(--navy);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .btn-add:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* ── ASIDE / CART ───────────────────────────────────────── */
+    aside {
+      width: 310px;
+      flex-shrink: 0;
+      background: var(--white);
+      border-left: 1px solid var(--lavender);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 110px;
+      height: calc(100vh - 110px);
+      overflow-y: auto;
+    }
+
+    .cart-heading {
+      
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--mocha);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--lavender);
+      margin-bottom: 0.5rem;
+    }
+
+    #cart-items { flex: 1; }
+
+    .cart-empty {
+      text-align: center;
+      color: var(--lavender);
+      font-style: italic;
+      font-size: 0.9rem;
+      padding: 2rem 0;
+    }
+
+    /* ── CART ITEM ──────────────────────────────────────────── */
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--lavender);
+    }
+
+    .cart-thumb {
+      width: 50px;
+      height: 40px;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: var(--lavender);
+    }
+
+    .cart-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cart-item-info { flex: 1; min-width: 0; }
+
+    .cart-item-info h4 {
+      
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cart-item-info .item-price {
+      font-size: 0.82rem;
+      color: var(--mocha);
+      font-style: italic;
+    }
+
+    .qty-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    .qty-ctrl button {
+      width: 22px;
+      height: 22px;
+      border: 1px solid var(--lavender);
+      background: transparent;
+      color: var(--navy);
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      line-height: 1;
+    }
+
+    .qty-ctrl button:hover {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    .qty-ctrl .qty-num {
+      
+      font-size: 0.72rem;
+      width: 18px;
+      text-align: center;
+      color: var(--navy);
+    }
+
+    /* ── CART FOOTER ────────────────────────────────────────── */
+    .cart-footer {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--lavender);
+      margin-top: 1rem;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.2rem;
+    }
+
+    .cart-total .label {
+      
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mocha);
+    }
+
+    .cart-total .amount {
+      
+      font-size: 1.1rem;
+      color: var(--navy);
+    }
+
+    .btn-order {
+      width: 100%;
+      
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 1rem;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+
+    .btn-order:hover { background: var(--teal); }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      header { padding: 1.5rem 2rem; flex-wrap: wrap; gap: 1rem; }
+      nav { display: none; }
+      .tab-bar { padding: 1rem 2rem; flex-wrap: wrap; }
+      main { padding: 2rem; }
+      .layout { flex-direction: column; }
+      aside {
+        width: 100%;
+        position: static;
+        height: auto;
+        border-left: none;
+        border-top: 1px solid var(--lavender);
+      }
+      .pizza-image { width: 110px; height: 90px; }
+    }
+  
