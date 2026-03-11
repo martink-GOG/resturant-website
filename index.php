@@ -1,5 +1,35 @@
 <!DOCTYPE html>
 <html>
+    <?php
+    $host='localhost';
+    $db = 'webshop';
+    $user = 'root';
+    $pass = '';
+    $charset = 'utf8mb4';
+
+    $dsn ="mysql:host=$host;dbname=$db;charset=$charset";
+    $opt = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXEPTION,
+        PDO::ATTR_DEFAULT_FETCHE_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ];
+
+    try
+    {
+        $connect =new PDO($dsn, $user, $pass, $opt);
+        echo "Verbinding is gemaakt";
+    }
+    catch(PDOexeption $e)
+    {
+        echo $e->getMessage();
+        die("Sorry, Database probleem")
+    }
+    
+    $sql ="SELECT* FROM studenten";
+    $statement = $pdo->prepare($sql);
+    $statement = execute();
+    $student= $statement->fetchAll();
+    ?>
 
 <head>
     <meta charset="UTF-8" />
